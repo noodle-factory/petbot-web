@@ -1,7 +1,12 @@
 # Simple React Chatbot Client
 
 
-## Screenshot
+# How to run
+
+```
+npm install
+npm start
+```
 
 
 # License
