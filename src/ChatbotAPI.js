@@ -1,10 +1,24 @@
+
 const API = {
   GetChatbotResponse: async message => {
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
-        if (message === "hi") resolve("Welcome to chatbot!");
-        else resolve("echo : " + message);
-      }, 2000);
+        if (message === "hi") {
+          resolve("Hi!")
+        }
+        else {
+          let data = {"text": message};
+          fetch("http://localhost:8080/connector/webhook", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify(data)
+          }).then(res => {
+            data = res.text();
+            resolve(data)
+          }); 
+        }
+      }, 0 );
+      
     });
   }
 };
