@@ -2,8 +2,7 @@
 
 
 # How to run
-- Rename file .env.js to .env
-- Setup SERVERL_URL at .env file
+Setup `SERVERL_URL` at `.env` file. By default, the app will listen to the port 8080 at local host. Then, configure the chat bot to connect to this `SERVERL_URL`.
 ## Option 1: Run manual
 
 ```
