@@ -8,7 +8,7 @@ const API = {
         }
         else {
           let data = {"text": message};
-          fetch(`${process.env.SERVER_URL}/connector/webhook`, {
+          fetch(`${process.env.REACT_APP_SERVER_URL}/connector/webhook`, {
             method: "POST",
             headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify(data)
