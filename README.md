@@ -2,10 +2,17 @@
 
 
 # How to run
+- Rename file .env.js to .env
+- Setup SERVERL_URL at .env file
+## Option 1: Run manual
 
 ```
 npm install
 npm start
+```
+## Option 2: Run by Docker
+```
+docker-compose up
 ```
 
 
