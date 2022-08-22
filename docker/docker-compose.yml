@@ -1,0 +1,10 @@
+version: '2.4'
+services:
+  petbot-web:
+    image: ghcr.io/noodle-factory/petbot-web:latest
+    container_name: petbot-web
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+    - 3000:80

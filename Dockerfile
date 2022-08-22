@@ -1,18 +1,22 @@
-# build stage
-FROM node:13.12.0-alpine
+# build environment
+FROM node:14.16.0-alpine as build
 
-# set working directory
 WORKDIR /app
-
-# add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json /app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@4.0.2 -g --silent
+COPY . /app
+RUN npm run build
 
-# install app dependencies
-COPY package.json ./
-RUN npm install
+# production environment
+FROM nginx:1.19.8-alpine
 
-# add app
-COPY . ./
+RUN mkdir -p /app
 
-# start app
-CMD ["npm", "start"] 
+COPY --from=build /app/build /var/www
+COPY nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+ENTRYPOINT ["nginx","-g","daemon off;"]
